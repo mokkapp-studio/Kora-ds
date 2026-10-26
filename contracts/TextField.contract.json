@@ -1,0 +1,100 @@
+{
+  "$schema": "./component.schema.json",
+  "id": "text-field",
+  "name": "TextField",
+  "version": "1.0.0",
+  "status": "stable",
+  "category": "form",
+  "description": "Campo de texto de una línea con etiqueta, ayuda y mensaje de error.",
+  "guidance": {
+    "dos": [
+      "Siempre con `label` asociada al input mediante `for` e `id`.",
+      "Usa la ayuda para el formato esperado; el error, para decir qué corregir.",
+      "Muestra un error o una ayuda, no los dos a la vez."
+    ],
+    "donts": [
+      { "case": "Usar el placeholder como etiqueta", "useInstead": "El `label`", "why": "Desaparece al escribir y no lo anuncian bien los lectores de pantalla." },
+      { "case": "Comunicar el error solo con el borde rojo", "useInstead": "Un mensaje en `k-field__error`", "why": "El color solo no basta." },
+      { "case": "Texto de varias líneas, selección o casillas", "useInstead": "Aún no existen TextArea, Select ni Checkbox: pregunta", "why": "No se improvisan controles fuera del inventario." }
+    ],
+    "related": [
+      { "component": "Button", "relation": "acompaña", "difference": "El envío del formulario es un Button con type=submit." },
+      { "component": "Card", "relation": "dentro-de", "difference": "Los formularios suelen ir en el cuerpo de una Card." }
+    ]
+  },
+  "semantics": { "element": "div", "role": null, "refTarget": "root" },
+  "props": [
+    { "name": "label", "type": "string", "default": null, "required": true, "description": "Etiqueta visible.", "part": "label" },
+    { "name": "id", "type": "string", "default": null, "required": true, "description": "Identificador del input; la etiqueta lo referencia con `for`.", "attribute": "id" },
+    { "name": "hint", "type": "string", "default": null, "required": false, "description": "Ayuda bajo el campo.", "part": "hint" },
+    { "name": "error", "type": "string", "default": null, "required": false, "description": "Mensaje de error. Sustituye a la ayuda.", "part": "error" },
+    { "name": "invalid", "type": "boolean", "default": false, "required": false, "description": "Marca el campo como inválido. Va siempre con `error`.", "cssClass": "k-field--invalid" },
+    { "name": "disabled", "type": "boolean", "default": false, "required": false, "description": "No disponible. Atributo nativo, nunca opacity.", "attribute": "disabled" }
+  ],
+  "states": {
+    "native": [
+      { "name": "focus-visible", "css": ":focus-visible" }
+    ],
+    "controlled": [
+      { "name": "invalid", "prop": "invalid", "attribute": "aria-invalid" },
+      { "name": "disabled", "prop": "disabled", "attribute": "disabled" }
+    ]
+  },
+  "anatomy": {
+    "root":  { "element": "div", "class": "k-field", "description": "Contenedor en columna." },
+    "label": { "element": "label", "class": "k-field__label", "description": "Etiqueta." },
+    "input": { "element": "input", "class": "k-field__input", "description": "El control." },
+    "hint":  { "element": "span", "class": "k-field__hint", "optional": true, "description": "Ayuda." },
+    "error": { "element": "span", "class": "k-field__error", "optional": true, "description": "Error." }
+  },
+  "tokens": {
+    "policy": {
+      "allowed": ["surface-", "text-", "border-", "feedback-", "focus-", "space-", "radius-", "font-"],
+      "forbidden": ["action-"]
+    },
+    "bindings": {
+      "base": { "gap": "space-1", "focusRing": "focus-ring" },
+      "byPart": {
+        "label": { "text": "text-primary", "fontSize": "font-size-sm", "fontWeight": "font-weight-medium" },
+        "input": { "background": "surface-raised", "text": "text-primary", "border": "border-strong", "radius": "radius-md", "height": "space-8", "paddingX": "space-3" },
+        "hint":  { "text": "text-muted", "fontSize": "font-size-sm" },
+        "error": { "text": "feedback-danger-text", "fontSize": "font-size-sm" }
+      },
+      "byState": {
+        "invalid":  { "border": "feedback-danger-text" },
+        "disabled": { "background": "border-subtle", "text": "text-muted" }
+      }
+    }
+  },
+  "a11y": {
+    "role": "textbox (nativo)",
+    "name": "La etiqueta asociada con for/id.",
+    "keyboard": ["Tab: foco", "Escribir: edita el valor"],
+    "focusIndicator": "Anillo de 2px con `focus-ring`. Nunca se quita.",
+    "minTarget": "48px de alto.",
+    "contrast": "Borde border-strong sobre surface-raised: 4,0:1 en claro y 4,2:1 en oscuro. Verificado."
+  },
+  "figma": {
+    "set": "TextField",
+    "key": null,
+    "variantProperties": {
+      "State": { "fromStates": { "default": "Default", "focus-visible": "Focus", "invalid": "Error", "disabled": "Disabled" } }
+    },
+    "textProperties": {
+      "Label": { "fromProp": "label", "example": "Correo electrónico" },
+      "Hint": { "fromProp": "hint", "example": "Te escribiremos solo para avisos de la cuenta." },
+      "Error": { "fromProp": "error", "example": "Introduce un correo válido." }
+    },
+    "booleanProperties": {
+      "Show hint": { "fromPart": "hint", "default": false },
+      "Show error": { "fromPart": "error", "default": false }
+    },
+    "slotProperties": {},
+    "ignoredProps": { "id": "Solo código: enlaza label e input (for/id). En Figma no existe." },
+    "layers": { "root": "TextField", "label": "Label", "input": "Input", "hint": "Hint", "error": "Error" },
+    "notes": ["Auto layout vertical, ancho 100% del contenedor (fill).", "State=Error muestra el mensaje: activa Show error junto con él.", "El texto escrito dentro del input no es una prop: se deja vacío o con un valor de ejemplo."]
+  },
+  "example": "<div class=\"k-field\"><label class=\"k-field__label\" for=\"email\">Correo</label><input class=\"k-field__input\" id=\"email\"><span class=\"k-field__hint\">Te escribiremos aquí.</span></div>",
+  "anchors": { "css": { "file": "components/components.css", "rootClass": "k-field" } },
+  "meta": { "source": "components/components.css", "needsReview": ["`aria-invalid` no está en el CSS; se añade en el marcado cuando invalid=true."] }
+}

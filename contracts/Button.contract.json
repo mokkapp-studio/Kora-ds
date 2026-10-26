@@ -1,0 +1,128 @@
+{
+  "$schema": "./component.schema.json",
+  "id": "button",
+  "name": "Button",
+  "version": "1.0.0",
+  "status": "stable",
+  "category": "action",
+  "description": "Lanza una acción cuando la persona lo pulsa. El énfasis se elige con `variant`; el tamaño, con `size`.",
+  "guidance": {
+    "dos": [
+      "Una sola acción `primary` por vista.",
+      "Etiqueta con verbo y objeto: «Guardar cambios», no «Aceptar».",
+      "Usa `danger` solo para acciones destructivas.",
+      "Jerarquía de énfasis: primary > secondary > ghost."
+    ],
+    "donts": [
+      { "case": "Navegar a otra página", "useInstead": "Un enlace <a>", "why": "Un enlace se abre en pestaña nueva y lo anuncia el lector de pantalla como enlace." },
+      { "case": "Dos botones primary en la misma vista", "useInstead": "Uno primary y el resto secondary o ghost", "why": "Si todo destaca, nada destaca." },
+      { "case": "Deshabilitar con opacity", "useInstead": "El atributo `disabled`", "why": "El estado deshabilitado tiene sus propios tokens y se comunica al lector de pantalla." },
+      { "case": "Un botón solo con icono", "useInstead": "Aún no existe IconButton: pregunta", "why": "Exige nombre accesible y medidas propias." }
+    ],
+    "related": [
+      { "component": "Badge", "relation": "no-confundir", "difference": "Badge es informativo y no se pulsa; Button ejecuta una acción." }
+    ]
+  },
+  "semantics": { "element": "button", "role": null, "refTarget": "root" },
+  "props": [
+    {
+      "name": "variant",
+      "type": "'primary' | 'secondary' | 'ghost' | 'danger'",
+      "default": null,
+      "required": true,
+      "description": "Énfasis visual. primary = relleno de marca; secondary = borde fuerte; ghost = sin relleno; danger = destructivo.",
+      "cssClass": "k-btn--{value}"
+    },
+    {
+      "name": "size",
+      "type": "'sm' | 'md'",
+      "default": "md",
+      "required": false,
+      "description": "Tamaño. md (48 de alto, táctil) por defecto; sm (32) para barras y cabeceras.",
+      "cssClass": { "sm": "k-btn--sm", "md": null }
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "default": false,
+      "required": false,
+      "description": "No disponible. Se resuelve con el atributo nativo, nunca con opacity.",
+      "attribute": "disabled"
+    },
+    {
+      "name": "type",
+      "type": "'button' | 'submit'",
+      "default": "button",
+      "required": false,
+      "description": "Dentro de un formulario, `submit` debe declararse de forma explícita.",
+      "attribute": "type"
+    },
+    {
+      "name": "children",
+      "type": "string",
+      "default": null,
+      "required": true,
+      "description": "Etiqueta del botón.",
+      "part": "root"
+    }
+  ],
+  "states": {
+    "native": [
+      { "name": "hover", "css": ":hover" },
+      { "name": "focus-visible", "css": ":focus-visible" }
+    ],
+    "controlled": [
+      { "name": "disabled", "prop": "disabled", "attribute": "disabled" }
+    ]
+  },
+  "anatomy": {
+    "root": { "element": "button", "class": "k-btn", "description": "Única parte: el botón con su etiqueta." }
+  },
+  "tokens": {
+    "policy": {
+      "allowed": ["action-", "surface-", "border-", "text-", "focus-", "space-", "radius-", "font-"],
+      "forbidden": ["feedback-", "shadow-"]
+    },
+    "bindings": {
+      "base": { "radius": "radius-md", "height": "space-8", "paddingX": "space-5", "gap": "space-2", "fontWeight": "font-weight-medium", "focusRing": "focus-ring" },
+      "byVariant": {
+        "primary":   { "background": "action-primary", "text": "text-inverse", "hoverBackground": "action-primary-hover" },
+        "secondary": { "background": "surface-raised", "text": "text-primary", "border": "border-strong", "hoverBorder": "text-primary" },
+        "ghost":     { "background": null, "text": "text-primary", "hoverBackground": "border-subtle" },
+        "danger":    { "background": "action-danger", "text": "text-inverse", "hoverBackground": "action-danger-hover" }
+      },
+      "bySize": {
+        "sm": { "height": "space-7", "paddingX": "space-3", "fontSize": "font-size-sm" }
+      },
+      "byState": {
+        "disabled": { "background": "border-subtle", "text": "text-muted" }
+      }
+    }
+  },
+  "a11y": {
+    "role": "button (nativo)",
+    "name": "La etiqueta (`children`) es el nombre accesible.",
+    "keyboard": ["Tab: foco", "Enter y Espacio: activar"],
+    "focusIndicator": "Anillo de 2px con `focus-ring`. Nunca se quita.",
+    "minTarget": "md cumple 48px de alto; sm (32px) solo en contextos densos.",
+    "contrast": "text-inverse sobre action-primary: 5,8:1 en claro. Verificado."
+  },
+  "figma": {
+    "set": "Button",
+    "key": null,
+    "variantProperties": {
+      "Variant": { "fromProp": "variant", "values": { "primary": "Primary", "secondary": "Secondary", "ghost": "Ghost", "danger": "Danger" } },
+      "Size": { "fromProp": "size", "values": { "sm": "SM", "md": "MD" } },
+      "State": { "fromStates": { "default": "Default", "hover": "Hover", "focus-visible": "Focus", "disabled": "Disabled" } }
+    },
+    "textProperties": { "Label": { "fromProp": "children", "example": "Guardar cambios" } },
+    "booleanProperties": {},
+    "slotProperties": {},
+    "ignoredProps": { "type": "Solo código: button o submit no cambia el aspecto." },
+    "layers": { "root": "Button" },
+    "notes": ["Auto layout horizontal, contenido centrado, ancho según contenido (hug).", "Disabled anula Hover: no existe la combinación State=Disabled con hover."]
+  },
+  "example": "<button class=\"k-btn k-btn--primary\">Guardar cambios</button>",
+  "anchors": { "css": { "file": "components/components.css", "rootClass": "k-btn" } },
+  "meta": { "source": "components/components.css", "needsReview": [] }
+}

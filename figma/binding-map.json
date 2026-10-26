@@ -1,0 +1,27 @@
+{
+  "$description": "Traduce cada clave de tokens.bindings de un contrato a la propiedad de Figma donde se enlaza la variable. Si un contrato usa una clave que no está aquí, npm run check falla: significa que ese estilo no tiene equivalente en Figma y hay que decidirlo antes.",
+  "colors": {
+    "background":      { "figma": "Fill del frame o de la forma", "scope": ["FRAME_FILL", "SHAPE_FILL"] },
+    "hoverBackground": { "figma": "Fill, solo en la variante State=Hover", "scope": ["FRAME_FILL", "SHAPE_FILL"] },
+    "text":            { "figma": "Fill de la capa de texto", "scope": ["TEXT_FILL"] },
+    "border":          { "figma": "Stroke (todos los lados)", "scope": ["STROKE_COLOR"] },
+    "hoverBorder":     { "figma": "Stroke, solo en la variante State=Hover", "scope": ["STROKE_COLOR"] },
+    "borderTop":       { "figma": "Stroke solo del lado superior", "scope": ["STROKE_COLOR"] },
+    "borderBottom":    { "figma": "Stroke solo del lado inferior", "scope": ["STROKE_COLOR"] },
+    "focusRing":       { "figma": "Stroke de 2px, solo en la variante State=Focus", "scope": ["STROKE_COLOR"] }
+  },
+  "numbers": {
+    "radius":     { "figma": "Corner radius", "scope": ["CORNER_RADIUS"] },
+    "height":     { "figma": "Alto mínimo del frame", "scope": ["WIDTH_HEIGHT"] },
+    "padding":    { "figma": "Padding de auto layout (los cuatro lados)", "scope": ["GAP"] },
+    "paddingX":   { "figma": "Padding izquierdo y derecho", "scope": ["GAP"] },
+    "paddingY":   { "figma": "Padding superior e inferior", "scope": ["GAP"] },
+    "gap":        { "figma": "Espacio entre elementos (item spacing)", "scope": ["GAP"] },
+    "fontSize":   { "figma": "Tamaño de fuente de la capa de texto", "scope": ["FONT_SIZE"] },
+    "fontWeight": { "figma": "Peso de fuente de la capa de texto", "scope": ["FONT_WEIGHT"] },
+    "lineHeight": { "figma": "Interlineado de la capa de texto", "scope": ["LINE_HEIGHT"] }
+  },
+  "styles": {
+    "shadow": { "figma": "Effect style (no es variable): se aplica el estilo con el mismo nombre" }
+  }
+}

@@ -1,0 +1,24 @@
+<!doctype html>
+<!-- EJEMPLO "MALO" A PROPÓSITO: cabecera de ajustes generada SIN skill. Sirve para ver el drift y para practicar el lint:
+     node scripts/lint-ds.mjs examples/sin-skill.html -->
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Ajustes (sin skill)</title>
+  <style>
+    body { margin: 0; background: #14151c; font-family: Inter, sans-serif; color: #fff; }
+    .header { background: #1B1B1F; padding: 18px 22px; border-radius: 10px; display: flex; justify-content: space-between; align-items: center; margin: 24px; }
+    .header h1 { font-size: 22px; margin: 0; }
+    .header p { color: #9a9aa5; font-size: 13px; margin: 4px 0 0; }
+    .save { background: #5b6cff; color: #fff; border: none; padding: 10px 17px; border-radius: 6px; cursor: pointer; }
+    .save:hover { background: #4a5bee; }
+    .menu { background: transparent; border: 1px solid #3a3a45; color: #fff; padding: 8px 12px; border-radius: 6px; outline: none; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div><h1>Ajustes de la cuenta</h1><p>Gestiona tu perfil y notificaciones</p></div>
+    <div><button class="menu">⋯</button> <button class="save">Guardar</button></div>
+  </div>
+</body>
+</html>

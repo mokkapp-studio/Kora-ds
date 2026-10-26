@@ -1,0 +1,120 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Contrato de componente Kora",
+  "description": "Formato mínimo. Los bloques núcleo son obligatorios; `example`, `anchors` y `meta` son recomendados. El editor (VS Code) marca lo que falte al abrir un contrato.",
+  "type": "object",
+  "required": ["id", "name", "version", "status", "category", "description", "guidance", "semantics", "props", "states", "anatomy", "tokens", "a11y", "figma"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "id": { "type": "string", "pattern": "^[a-z][a-z0-9-]*$", "description": "kebab-case" },
+    "name": { "type": "string", "pattern": "^[A-Z][A-Za-z0-9]*$", "description": "PascalCase; igual que el nombre del archivo" },
+    "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$", "description": "patch: texto · minor: prop o estado nuevo · major: renombrar o quitar" },
+    "status": { "enum": ["draft", "stable", "deprecated"] },
+    "category": { "enum": ["action", "form", "container", "feedback", "navigation", "overlay", "data"] },
+    "description": { "type": "string", "minLength": 10 },
+    "guidance": {
+      "type": "object",
+      "required": ["dos", "donts", "related"],
+      "properties": {
+        "dos": { "type": "array", "items": { "type": "string" } },
+        "donts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["case", "useInstead", "why"],
+            "properties": { "case": { "type": "string" }, "useInstead": { "type": "string" }, "why": { "type": "string" } }
+          }
+        },
+        "related": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["component", "relation", "difference"],
+            "properties": { "component": { "type": "string" }, "relation": { "type": "string" }, "difference": { "type": "string" } }
+          }
+        }
+      }
+    },
+    "semantics": {
+      "type": "object",
+      "required": ["element", "refTarget"],
+      "properties": { "element": { "type": "string" }, "role": { "type": ["string", "null"] }, "refTarget": { "type": "string", "description": "clave de anatomy que lleva el ref" } }
+    },
+    "props": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "type", "default", "required", "description"],
+        "properties": {
+          "name": { "type": "string" },
+          "type": { "type": "string", "description": "Enum entre comillas simples: 'a' | 'b'; o boolean, string, node" },
+          "default": {},
+          "required": { "type": "boolean" },
+          "description": { "type": "string" },
+          "cssClass": { "description": "Clase CSS que produce la prop: cadena con {value}, cadena fija (boolean) o mapa valor→clase", "type": ["string", "object"] },
+          "attribute": { "type": "string", "description": "Atributo HTML nativo" },
+          "part": { "type": "string", "description": "Parte de anatomy que recibe el contenido" }
+        }
+      }
+    },
+    "states": {
+      "type": "object",
+      "required": ["native", "controlled"],
+      "properties": {
+        "native": { "type": "array", "items": { "type": "object", "required": ["name", "css"] } },
+        "controlled": { "type": "array", "items": { "type": "object", "required": ["name", "prop"] } }
+      }
+    },
+    "anatomy": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "object",
+        "required": ["element", "class", "description"],
+        "properties": { "element": { "type": "string" }, "class": { "type": "string" }, "optional": { "type": "boolean" }, "description": { "type": "string" } }
+      }
+    },
+    "tokens": {
+      "type": "object",
+      "required": ["policy", "bindings"],
+      "properties": {
+        "policy": {
+          "type": "object",
+          "required": ["allowed", "forbidden"],
+          "properties": {
+            "allowed": { "type": "array", "items": { "type": "string" }, "description": "Prefijos de variable CSS permitidos, p. ej. \"surface-\"" },
+            "forbidden": { "type": "array", "items": { "type": "string" } }
+          }
+        },
+        "bindings": { "type": "object", "description": "Valores: nombre de variable CSS sin `--`, número (px de borde) o null" }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "required": ["role", "name", "keyboard", "focusIndicator", "minTarget", "contrast"],
+      "properties": {
+        "role": { "type": "string" }, "name": { "type": "string" }, "keyboard": { "type": "array", "items": { "type": "string" } },
+        "focusIndicator": { "type": "string" }, "minTarget": { "type": "string" }, "contrast": { "type": "string" }
+      }
+    },
+    "figma": {
+      "type": "object",
+      "description": "Cómo se representa el componente en la librería de Figma. Los nombres de variable de Figma NO se escriben aquí: salen de tokens.bindings con la regla de figma/LIBRARY-SPEC.md.",
+      "required": ["set", "key", "variantProperties", "textProperties", "booleanProperties", "slotProperties", "ignoredProps", "layers"],
+      "properties": {
+        "set": { "type": "string", "description": "Nombre del component set en Figma; igual que name" },
+        "key": { "type": ["string", "null"], "description": "Clave del componente en la librería publicada. null hasta publicarla" },
+        "variantProperties": { "type": "object", "description": "Propiedad de variante → { fromProp, values } (enum) o { fromStates } (estados)" },
+        "textProperties": { "type": "object", "description": "Propiedad de texto → { fromProp, example }" },
+        "booleanProperties": { "type": "object", "description": "Propiedad booleana → { fromPart, default } (parte opcional) o { fromProp }" },
+        "slotProperties": { "type": "object", "description": "Slot o instance swap → { fromProp } (props de tipo node)" },
+        "ignoredProps": { "type": "object", "description": "Props sin representación visual → motivo" },
+        "layers": { "type": "object", "description": "Parte de anatomy → nombre de capa en Figma" },
+        "notes": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "example": { "type": "string" },
+    "anchors": { "type": "object" },
+    "meta": { "type": "object", "properties": { "source": { "type": "string" }, "needsReview": { "type": "array", "items": { "type": "string" } } } }
+  }
+}

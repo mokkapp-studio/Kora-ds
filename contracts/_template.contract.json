@@ -1,0 +1,67 @@
+{
+  "$schema": "./component.schema.json",
+  "id": "<kebab-case, ej. menu>",
+  "name": "<PascalCase, igual que el archivo, ej. Menu>",
+  "version": "0.1.0",
+  "status": "draft",
+  "category": "<action | form | container | feedback | navigation | overlay | data>",
+  "description": "<Una frase: qué hace y para qué se usa>",
+  "guidance": {
+    "dos": ["<2-4 reglas de uso correcto>"],
+    "donts": [
+      { "case": "<situación que NO es para este componente>", "useInstead": "<componente o solución correcta>", "why": "<por qué>" }
+    ],
+    "related": [
+      { "component": "<otro componente>", "relation": "<similar | contiene | dentro-de | no-confundir>", "difference": "<en qué se diferencian>" }
+    ]
+  },
+  "semantics": { "element": "<elemento HTML>", "role": null, "refTarget": "root" },
+  "props": [
+    {
+      "name": "<nombre, según el vocabulario: variant, size, disabled…>",
+      "type": "<'a' | 'b' | boolean | string | node>",
+      "default": null,
+      "required": false,
+      "description": "<qué cambia>",
+      "cssClass": "<k-xxx--{value} | clase fija | mapa valor→clase | quitar la clave si no hay clase>"
+    }
+  ],
+  "states": {
+    "native": [{ "name": "hover", "css": ":hover" }],
+    "controlled": []
+  },
+  "anatomy": {
+    "root": { "element": "<elemento>", "class": "<k-xxx>", "description": "<qué es esta parte>" }
+  },
+  "tokens": {
+    "policy": { "allowed": ["<prefijos de variable permitidos, ej. surface->"], "forbidden": ["<prefijos prohibidos>"] },
+    "bindings": {
+      "base": { "background": "<nombre de variable CSS sin --, ej. surface-raised>" }
+    }
+  },
+  "a11y": {
+    "role": "<rol>",
+    "name": "<de dónde sale el nombre accesible>",
+    "keyboard": ["<tecla: efecto>"],
+    "focusIndicator": "<cómo se ve el foco>",
+    "minTarget": "<tamaño mínimo>",
+    "contrast": "<qué pares de color se han verificado>"
+  },
+  "figma": {
+    "set": "<igual que name, ej. Menu>",
+    "key": null,
+    "variantProperties": {
+      "<Propiedad en Figma, ej. Variant>": { "fromProp": "<prop enum de arriba>", "values": { "<valor>": "<Valor en Figma>" } },
+      "State": { "fromStates": { "default": "Default", "hover": "Hover" } }
+    },
+    "textProperties": { "<Label>": { "fromProp": "<prop string>", "example": "<texto de ejemplo>" } },
+    "booleanProperties": { "<Show xxx>": { "fromPart": "<parte opcional de anatomy>", "default": false } },
+    "slotProperties": {},
+    "ignoredProps": { "<prop solo de código>": "<motivo>" },
+    "layers": { "root": "<nombre de capa, ej. Menu>" },
+    "notes": ["<auto layout, tamaños, combinaciones que no existen>"]
+  },
+  "example": "<fragmento HTML mínimo>",
+  "anchors": { "css": { "file": "components/components.css", "rootClass": "<k-xxx>" } },
+  "meta": { "source": "<de dónde sale: CSS, Figma, spec>", "needsReview": ["<todo lo que has supuesto y no está confirmado>"] }
+}

@@ -1,0 +1,69 @@
+/* GENERADO por scripts/build-tokens.mjs desde tokens/tokens.json. No editar a mano. */
+:root,
+[data-theme="light"] {
+  color-scheme: light;
+  --surface-base: #F7F7F9;
+  --surface-raised: #FFFFFF;
+  --border-subtle: #DDDFE6;
+  --border-strong: #7A7F90;
+  --text-primary: #12131A;
+  --text-muted: #5A5F70;
+  --text-inverse: #FFFFFF;
+  --action-primary: #4553E6;
+  --action-primary-hover: #3640C0;
+  --action-danger: #D92D3A;
+  --action-danger-hover: #B3202D;
+  --feedback-success-bg: #DDF5E6;
+  --feedback-success-text: #14532D;
+  --feedback-warning-bg: #FFF1D1;
+  --feedback-warning-text: #7A4A00;
+  --feedback-danger-bg: #FDE3E3;
+  --feedback-danger-text: #8E1B26;
+  --focus-ring: #4553E6;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 32px;
+  --space-8: 48px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-full: 999px;
+  --font-size-sm: 14px;
+  --font-size-md: 16px;
+  --font-size-lg: 20px;
+  --font-size-xl: 28px;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.5;
+  --shadow-sm: 0 1px 2px rgba(18, 19, 26, 0.08);
+  --shadow-md: 0 4px 12px rgba(18, 19, 26, 0.12);
+  --font-family-sans: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --surface-base: #12131A;
+  --surface-raised: #1B1D27;
+  --border-subtle: #2A2D3A;
+  --border-strong: #7A7F90;
+  --text-primary: #F7F7F9;
+  --text-muted: #C3C6D1;
+  --text-inverse: #12131A;
+  --action-primary: #8C95FF;
+  --action-primary-hover: #A5ACFF;
+  --action-danger: #FF8A92;
+  --action-danger-hover: #F4A3A9;
+  --feedback-success-bg: #0C2A1A;
+  --feedback-success-text: #8FE0B1;
+  --feedback-warning-bg: #2E1D00;
+  --feedback-warning-text: #FFD27A;
+  --feedback-danger-bg: #330A0E;
+  --feedback-danger-text: #F4A3A9;
+  --focus-ring: #A5ACFF;
+}

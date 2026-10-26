@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kora · playground</title>
+  <link rel="stylesheet" href="../tokens/tokens.css">
+  <link rel="stylesheet" href="../components/components.css">
+  <style>
+    .stack { display: flex; flex-direction: column; gap: var(--space-6); max-width: 45rem; margin: 0 auto; padding: var(--space-7) var(--space-4); }
+    .row { display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; }
+    h1 { margin: 0; font-size: var(--font-size-xl); line-height: var(--line-height-tight); }
+  </style>
+</head>
+<body class="k-page">
+  <main class="stack">
+    <div class="row" style="justify-content: space-between;">
+      <h1>Kora · playground</h1>
+      <button class="k-btn k-btn--secondary k-btn--sm" id="theme">Cambiar tema</button>
+    </div>
+
+    <section class="k-card">
+      <div class="k-card__header">Botones</div>
+      <div class="k-card__body row">
+        <button class="k-btn k-btn--primary">Guardar cambios</button>
+        <button class="k-btn k-btn--secondary">Cancelar</button>
+        <button class="k-btn k-btn--ghost">Más tarde</button>
+        <button class="k-btn k-btn--danger">Eliminar cuenta</button>
+        <button class="k-btn k-btn--primary k-btn--sm">Pequeño</button>
+        <button class="k-btn k-btn--primary" disabled>Deshabilitado</button>
+      </div>
+    </section>
+
+    <section class="k-card">
+      <div class="k-card__header">Campos</div>
+      <div class="k-card__body row">
+        <div class="k-field">
+          <label class="k-field__label" for="n">Nombre</label>
+          <input class="k-field__input" id="n" placeholder="Ana García">
+          <span class="k-field__hint">Como aparecerá en tu perfil.</span>
+        </div>
+        <div class="k-field k-field--invalid">
+          <label class="k-field__label" for="e">Correo</label>
+          <input class="k-field__input" id="e" value="ana@">
+          <span class="k-field__error">Introduce un correo válido.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="k-card">
+      <div class="k-card__header">Badges</div>
+      <div class="k-card__body row">
+        <span class="k-badge k-badge--neutral">Borrador</span>
+        <span class="k-badge k-badge--success">Publicado</span>
+        <span class="k-badge k-badge--warning">Pendiente</span>
+        <span class="k-badge k-badge--danger">Error</span>
+      </div>
+      <div class="k-card__footer">
+        <button class="k-btn k-btn--ghost k-btn--sm">Cerrar</button>
+        <button class="k-btn k-btn--primary k-btn--sm">Aceptar</button>
+      </div>
+    </section>
+  </main>
+  <script>
+    document.getElementById('theme').addEventListener('click', () => {
+      const r = document.documentElement;
+      r.dataset.theme = r.dataset.theme === 'dark' ? 'light' : 'dark';
+    });
+  </script>
+</body>
+</html>

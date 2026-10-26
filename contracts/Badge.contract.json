@@ -1,0 +1,85 @@
+{
+  "$schema": "./component.schema.json",
+  "id": "badge",
+  "name": "Badge",
+  "version": "1.0.0",
+  "status": "stable",
+  "category": "feedback",
+  "description": "Etiqueta corta e informativa que indica un estado o categoría. No es interactiva.",
+  "guidance": {
+    "dos": [
+      "Texto de una o dos palabras: «Publicado», «Pendiente».",
+      "El significado va siempre en el texto; el color solo lo refuerza."
+    ],
+    "donts": [
+      { "case": "Algo que se pueda pulsar", "useInstead": "Button", "why": "Un Badge no tiene foco, ni teclado, ni estados interactivos." },
+      { "case": "Frases largas o mensajes", "useInstead": "Texto normal o un mensaje de campo (`k-field__error`)", "why": "Es una etiqueta, no un aviso." },
+      { "case": "Indicar solo con color", "useInstead": "Texto que diga el estado", "why": "Accesibilidad: el color solo no basta." }
+    ],
+    "related": [
+      { "component": "Button", "relation": "no-confundir", "difference": "Button ejecuta una acción; Badge solo informa." }
+    ]
+  },
+  "semantics": { "element": "span", "role": null, "refTarget": "root" },
+  "props": [
+    {
+      "name": "variant",
+      "type": "'neutral' | 'success' | 'warning' | 'danger'",
+      "default": "neutral",
+      "required": false,
+      "description": "Significado: neutral = borrador o categoría; success = correcto; warning = pendiente o aviso; danger = error.",
+      "cssClass": "k-badge--{value}"
+    },
+    {
+      "name": "children",
+      "type": "string",
+      "default": null,
+      "required": true,
+      "description": "Texto de la etiqueta.",
+      "part": "root"
+    }
+  ],
+  "states": { "native": [], "controlled": [] },
+  "anatomy": {
+    "root": { "element": "span", "class": "k-badge", "description": "Única parte: la píldora con su texto." }
+  },
+  "tokens": {
+    "policy": {
+      "allowed": ["feedback-", "border-", "text-", "space-", "radius-", "font-", "line-height-"],
+      "forbidden": ["action-", "shadow-"]
+    },
+    "bindings": {
+      "base": { "paddingX": "space-2", "paddingY": "space-1", "radius": "radius-full", "fontSize": "font-size-sm", "fontWeight": "font-weight-medium", "lineHeight": "line-height-tight" },
+      "byVariant": {
+        "neutral": { "background": "border-subtle", "text": "text-muted" },
+        "success": { "background": "feedback-success-bg", "text": "feedback-success-text" },
+        "warning": { "background": "feedback-warning-bg", "text": "feedback-warning-text" },
+        "danger":  { "background": "feedback-danger-bg", "text": "feedback-danger-text" }
+      }
+    }
+  },
+  "a11y": {
+    "role": "ninguno (texto)",
+    "name": "El propio texto.",
+    "keyboard": [],
+    "focusIndicator": "No recibe foco.",
+    "minTarget": "No es interactivo: no aplica.",
+    "contrast": "Pares de feedback verificados en claro y oscuro (6,7:1 a 11,4:1)."
+  },
+  "figma": {
+    "set": "Badge",
+    "key": null,
+    "variantProperties": {
+      "Variant": { "fromProp": "variant", "values": { "neutral": "Neutral", "success": "Success", "warning": "Warning", "danger": "Danger" } }
+    },
+    "textProperties": { "Label": { "fromProp": "children", "example": "Pagada" } },
+    "booleanProperties": {},
+    "slotProperties": {},
+    "ignoredProps": {},
+    "layers": { "root": "Badge" },
+    "notes": ["Auto layout horizontal, ancho según contenido (hug).", "No es interactivo: no se crean variantes Hover ni Focus."]
+  },
+  "example": "<span class=\"k-badge k-badge--success\">Publicado</span>",
+  "anchors": { "css": { "file": "components/components.css", "rootClass": "k-badge" } },
+  "meta": { "source": "components/components.css", "needsReview": [] }
+}

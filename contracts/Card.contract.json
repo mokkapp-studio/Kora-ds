@@ -1,0 +1,81 @@
+{
+  "$schema": "./component.schema.json",
+  "id": "card",
+  "name": "Card",
+  "version": "1.0.0",
+  "status": "stable",
+  "category": "container",
+  "description": "Agrupa contenido relacionado sobre la base de la página. Tiene cabecera y pie opcionales.",
+  "guidance": {
+    "dos": [
+      "Colócala sobre `surface-base`: su fondo es `surface-raised`.",
+      "Pon las acciones en el pie, alineadas a la derecha, con una sola primary.",
+      "Usa la cabecera solo si el contenido necesita un título."
+    ],
+    "donts": [
+      { "case": "Anidar una Card dentro de otra", "useInstead": "Divider o espaciado (aún no existe Divider: pregunta)", "why": "Las capas dentro de capas pierden jerarquía." },
+      { "case": "Cambiar su fondo a mano", "useInstead": "El token `surface-raised`", "why": "El modo oscuro cambia solo si se usa el token." },
+      { "case": "Un modal o un menú flotante", "useInstead": "Aún no existen Modal ni Menu: pregunta", "why": "Una Card no gestiona capas ni foco atrapado." }
+    ],
+    "related": [
+      { "component": "Button", "relation": "contiene", "difference": "Las acciones del pie son Button." },
+      { "component": "TextField", "relation": "contiene", "difference": "Los formularios van en el cuerpo." }
+    ]
+  },
+  "semantics": { "element": "section", "role": null, "refTarget": "root" },
+  "props": [
+    { "name": "header", "type": "node", "default": null, "required": false, "description": "Título de la tarjeta.", "part": "header" },
+    { "name": "children", "type": "node", "default": null, "required": true, "description": "Contenido principal.", "part": "body" },
+    { "name": "footer", "type": "node", "default": null, "required": false, "description": "Acciones; se alinean a la derecha.", "part": "footer" }
+  ],
+  "states": { "native": [], "controlled": [] },
+  "anatomy": {
+    "root":   { "element": "section", "class": "k-card", "description": "Contenedor con fondo raised, borde sutil y sombra." },
+    "header": { "element": "div", "class": "k-card__header", "optional": true, "description": "Título." },
+    "body":   { "element": "div", "class": "k-card__body", "description": "Contenido." },
+    "footer": { "element": "div", "class": "k-card__footer", "optional": true, "description": "Acciones." }
+  },
+  "tokens": {
+    "policy": {
+      "allowed": ["surface-", "border-", "space-", "radius-", "shadow-", "font-"],
+      "forbidden": ["action-", "feedback-"]
+    },
+    "bindings": {
+      "base": { "background": "surface-raised", "border": "border-subtle", "radius": "radius-lg", "shadow": "shadow-sm" },
+      "byPart": {
+        "header": { "paddingY": "space-4", "paddingX": "space-6", "fontSize": "font-size-lg", "fontWeight": "font-weight-bold", "borderBottom": "border-subtle" },
+        "body":   { "padding": "space-6" },
+        "footer": { "paddingY": "space-4", "paddingX": "space-6", "gap": "space-2", "borderTop": "border-subtle" }
+      }
+    }
+  },
+  "a11y": {
+    "role": "región (section); añade `aria-labelledby` si tiene cabecera.",
+    "name": "El título de la cabecera, si existe.",
+    "keyboard": [],
+    "focusIndicator": "No recibe foco; sí sus botones y campos.",
+    "minTarget": "No es interactiva: no aplica.",
+    "contrast": "Texto principal sobre surface-raised: 18,5:1 en claro y 15,7:1 en oscuro."
+  },
+  "figma": {
+    "set": "Card",
+    "key": null,
+    "variantProperties": {},
+    "textProperties": {},
+    "booleanProperties": {
+      "Show header": { "fromPart": "header", "default": true },
+      "Show footer": { "fromPart": "footer", "default": false }
+    },
+    "slotProperties": {
+      "Header": { "fromProp": "header" },
+      "Body": { "fromProp": "children" },
+      "Footer": { "fromProp": "footer" }
+    },
+    "ignoredProps": {},
+    "layers": { "root": "Card", "header": "Header", "body": "Body", "footer": "Footer" },
+    "notes": ["Auto layout vertical, ancho 100% (fill).", "Header, Body y Footer son slots. Si tu archivo aún no tiene slots, usa Instance swap con la misma propiedad.", "El Card va sobre surface-base y no se anida."]
+  },
+  "example": "<section class=\"k-card\"><div class=\"k-card__header\">Título</div><div class=\"k-card__body\">Contenido</div><div class=\"k-card__footer\"><button class=\"k-btn k-btn--primary k-btn--sm\">Aceptar</button></div></section>",
+  "anchors": { "css": { "file": "components/components.css", "rootClass": "k-card" } },
+  "meta": { "source": "components/components.css", "needsReview": [] }
+}

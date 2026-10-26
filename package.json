@@ -1,0 +1,14 @@
+{
+  "name": "kora-design-system",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "tokens:build": "node scripts/build-tokens.mjs",
+    "figma:build": "node scripts/build-figma.mjs",
+    "check": "node check.mjs",
+    "lint:ds": "node scripts/lint-ds.mjs",
+    "skill:sync": "node scripts/sync-skill.mjs",
+    "skill:sync:figma": "node scripts/sync-skill.mjs --kind figma",
+    "verify": "npm run tokens:build && npm run figma:build && npm run check && npm run lint:ds"
+  }
+}

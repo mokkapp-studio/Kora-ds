@@ -1,0 +1,727 @@
+{
+  "$description": "GENERADO por scripts/build-figma.mjs desde tokens/tokens.json y contracts/. No editar a mano: cambia la fuente y ejecuta npm run figma:build. Sirve para crear las variables en Figma (a mano, con un plugin o con el conector MCP).",
+  "naming": {
+    "semantic": "surface-base → color/surface/base",
+    "scale": "space-3 → space/3 · font-size-sm → font-size/sm",
+    "effect": "shadow-sm → estilo de efecto shadow/sm",
+    "primitive": "primitive.gray.50 → gray/50 (colección oculta al publicar)"
+  },
+  "collections": [
+    {
+      "name": "Primitives",
+      "modes": [
+        "Value"
+      ],
+      "hiddenFromPublishing": true,
+      "variables": [
+        {
+          "name": "gray/0",
+          "type": "COLOR",
+          "value": "#FFFFFF"
+        },
+        {
+          "name": "gray/50",
+          "type": "COLOR",
+          "value": "#F7F7F9"
+        },
+        {
+          "name": "gray/100",
+          "type": "COLOR",
+          "value": "#EEEFF3"
+        },
+        {
+          "name": "gray/200",
+          "type": "COLOR",
+          "value": "#DDDFE6"
+        },
+        {
+          "name": "gray/300",
+          "type": "COLOR",
+          "value": "#C3C6D1"
+        },
+        {
+          "name": "gray/500",
+          "type": "COLOR",
+          "value": "#7A7F90"
+        },
+        {
+          "name": "gray/600",
+          "type": "COLOR",
+          "value": "#5A5F70"
+        },
+        {
+          "name": "gray/700",
+          "type": "COLOR",
+          "value": "#3F4352"
+        },
+        {
+          "name": "gray/800",
+          "type": "COLOR",
+          "value": "#2A2D3A"
+        },
+        {
+          "name": "gray/900",
+          "type": "COLOR",
+          "value": "#1B1D27"
+        },
+        {
+          "name": "gray/950",
+          "type": "COLOR",
+          "value": "#12131A"
+        },
+        {
+          "name": "indigo/300",
+          "type": "COLOR",
+          "value": "#A5ACFF"
+        },
+        {
+          "name": "indigo/400",
+          "type": "COLOR",
+          "value": "#8C95FF"
+        },
+        {
+          "name": "indigo/600",
+          "type": "COLOR",
+          "value": "#4553E6"
+        },
+        {
+          "name": "indigo/700",
+          "type": "COLOR",
+          "value": "#3640C0"
+        },
+        {
+          "name": "red/100",
+          "type": "COLOR",
+          "value": "#FDE3E3"
+        },
+        {
+          "name": "red/300",
+          "type": "COLOR",
+          "value": "#F4A3A9"
+        },
+        {
+          "name": "red/400",
+          "type": "COLOR",
+          "value": "#FF8A92"
+        },
+        {
+          "name": "red/600",
+          "type": "COLOR",
+          "value": "#D92D3A"
+        },
+        {
+          "name": "red/700",
+          "type": "COLOR",
+          "value": "#B3202D"
+        },
+        {
+          "name": "red/800",
+          "type": "COLOR",
+          "value": "#8E1B26"
+        },
+        {
+          "name": "red/950",
+          "type": "COLOR",
+          "value": "#330A0E"
+        },
+        {
+          "name": "green/100",
+          "type": "COLOR",
+          "value": "#DDF5E6"
+        },
+        {
+          "name": "green/300",
+          "type": "COLOR",
+          "value": "#8FE0B1"
+        },
+        {
+          "name": "green/800",
+          "type": "COLOR",
+          "value": "#14532D"
+        },
+        {
+          "name": "green/950",
+          "type": "COLOR",
+          "value": "#0C2A1A"
+        },
+        {
+          "name": "amber/100",
+          "type": "COLOR",
+          "value": "#FFF1D1"
+        },
+        {
+          "name": "amber/300",
+          "type": "COLOR",
+          "value": "#FFD27A"
+        },
+        {
+          "name": "amber/800",
+          "type": "COLOR",
+          "value": "#7A4A00"
+        },
+        {
+          "name": "amber/950",
+          "type": "COLOR",
+          "value": "#2E1D00"
+        }
+      ]
+    },
+    {
+      "name": "Semantic",
+      "modes": [
+        "Light",
+        "Dark"
+      ],
+      "variables": [
+        {
+          "name": "color/surface/base",
+          "token": "surface-base",
+          "type": "COLOR",
+          "scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
+          "description": "Fondo de la página. Nada se dibuja por debajo.",
+          "values": {
+            "Light": {
+              "alias": "gray/50"
+            },
+            "Dark": {
+              "alias": "gray/950"
+            }
+          }
+        },
+        {
+          "name": "color/surface/raised",
+          "token": "surface-raised",
+          "type": "COLOR",
+          "scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
+          "description": "Todo lo que se apoya SOBRE la base: tarjetas, paneles, campos, modales.",
+          "values": {
+            "Light": {
+              "alias": "gray/0"
+            },
+            "Dark": {
+              "alias": "gray/900"
+            }
+          }
+        },
+        {
+          "name": "color/border/subtle",
+          "token": "border-subtle",
+          "type": "COLOR",
+          "scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL",
+            "STROKE_COLOR"
+          ],
+          "description": "Separadores y bordes de contenedores.",
+          "values": {
+            "Light": {
+              "alias": "gray/200"
+            },
+            "Dark": {
+              "alias": "gray/800"
+            }
+          }
+        },
+        {
+          "name": "color/border/strong",
+          "token": "border-strong",
+          "type": "COLOR",
+          "scopes": [
+            "STROKE_COLOR"
+          ],
+          "description": "Bordes de elementos interactivos (campos, botón secundario).",
+          "values": {
+            "Light": {
+              "alias": "gray/500"
+            },
+            "Dark": {
+              "alias": "gray/500"
+            }
+          }
+        },
+        {
+          "name": "color/text/primary",
+          "token": "text-primary",
+          "type": "COLOR",
+          "scopes": [
+            "STROKE_COLOR",
+            "TEXT_FILL"
+          ],
+          "description": "Texto principal.",
+          "values": {
+            "Light": {
+              "alias": "gray/950"
+            },
+            "Dark": {
+              "alias": "gray/50"
+            }
+          }
+        },
+        {
+          "name": "color/text/muted",
+          "token": "text-muted",
+          "type": "COLOR",
+          "scopes": [
+            "TEXT_FILL"
+          ],
+          "description": "Texto secundario, ayudas, etiquetas.",
+          "values": {
+            "Light": {
+              "alias": "gray/600"
+            },
+            "Dark": {
+              "alias": "gray/300"
+            }
+          }
+        },
+        {
+          "name": "color/text/inverse",
+          "token": "text-inverse",
+          "type": "COLOR",
+          "scopes": [
+            "TEXT_FILL"
+          ],
+          "description": "Texto sobre action-primary y action-danger.",
+          "values": {
+            "Light": {
+              "alias": "gray/0"
+            },
+            "Dark": {
+              "alias": "gray/950"
+            }
+          }
+        },
+        {
+          "name": "color/action/primary",
+          "token": "action-primary",
+          "type": "COLOR",
+          "scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
+          "description": "Fondo de la acción principal.",
+          "values": {
+            "Light": {
+              "alias": "indigo/600"
+            },
+            "Dark": {
+              "alias": "indigo/400"
+            }
+          }
+        },
+        {
+          "name": "color/action/primary/hover",
+          "token": "action-primary-hover",
+          "type": "COLOR",
+          "scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
+          "description": "Hover de la acción principal.",
+          "values": {
+            "Light": {
+              "alias": "indigo/700"
+            },
+            "Dark": {
+              "alias": "indigo/300"
+            }
+          }
+        },
+        {
+          "name": "color/action/danger",
+          "token": "action-danger",
+          "type": "COLOR",
+          "scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
+          "description": "Fondo de una acción destructiva.",
+          "values": {
+            "Light": {
+              "alias": "red/600"
+            },
+            "Dark": {
+              "alias": "red/400"
+            }
+          }
+        },
+        {
+          "name": "color/action/danger/hover",
+          "token": "action-danger-hover",
+          "type": "COLOR",
+          "scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
+          "description": "Hover de una acción destructiva.",
+          "values": {
+            "Light": {
+              "alias": "red/700"
+            },
+            "Dark": {
+              "alias": "red/300"
+            }
+          }
+        },
+        {
+          "name": "color/feedback/success/bg",
+          "token": "feedback-success-bg",
+          "type": "COLOR",
+          "scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
+          "description": "Fondo de estado correcto.",
+          "values": {
+            "Light": {
+              "alias": "green/100"
+            },
+            "Dark": {
+              "alias": "green/950"
+            }
+          }
+        },
+        {
+          "name": "color/feedback/success/text",
+          "token": "feedback-success-text",
+          "type": "COLOR",
+          "scopes": [
+            "TEXT_FILL"
+          ],
+          "description": "Texto de estado correcto.",
+          "values": {
+            "Light": {
+              "alias": "green/800"
+            },
+            "Dark": {
+              "alias": "green/300"
+            }
+          }
+        },
+        {
+          "name": "color/feedback/warning/bg",
+          "token": "feedback-warning-bg",
+          "type": "COLOR",
+          "scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
+          "description": "Fondo de aviso.",
+          "values": {
+            "Light": {
+              "alias": "amber/100"
+            },
+            "Dark": {
+              "alias": "amber/950"
+            }
+          }
+        },
+        {
+          "name": "color/feedback/warning/text",
+          "token": "feedback-warning-text",
+          "type": "COLOR",
+          "scopes": [
+            "TEXT_FILL"
+          ],
+          "description": "Texto de aviso.",
+          "values": {
+            "Light": {
+              "alias": "amber/800"
+            },
+            "Dark": {
+              "alias": "amber/300"
+            }
+          }
+        },
+        {
+          "name": "color/feedback/danger/bg",
+          "token": "feedback-danger-bg",
+          "type": "COLOR",
+          "scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
+          "description": "Fondo de error.",
+          "values": {
+            "Light": {
+              "alias": "red/100"
+            },
+            "Dark": {
+              "alias": "red/950"
+            }
+          }
+        },
+        {
+          "name": "color/feedback/danger/text",
+          "token": "feedback-danger-text",
+          "type": "COLOR",
+          "scopes": [
+            "STROKE_COLOR",
+            "TEXT_FILL"
+          ],
+          "description": "Texto de error.",
+          "values": {
+            "Light": {
+              "alias": "red/800"
+            },
+            "Dark": {
+              "alias": "red/300"
+            }
+          }
+        },
+        {
+          "name": "color/focus/ring",
+          "token": "focus-ring",
+          "type": "COLOR",
+          "scopes": [
+            "STROKE_COLOR"
+          ],
+          "description": "Anillo de foco. Nunca se quita.",
+          "values": {
+            "Light": {
+              "alias": "indigo/600"
+            },
+            "Dark": {
+              "alias": "indigo/300"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Scale",
+      "modes": [
+        "Value"
+      ],
+      "variables": [
+        {
+          "name": "space/1",
+          "token": "space-1",
+          "type": "FLOAT",
+          "scopes": [
+            "WIDTH_HEIGHT",
+            "GAP"
+          ],
+          "value": 4
+        },
+        {
+          "name": "space/2",
+          "token": "space-2",
+          "type": "FLOAT",
+          "scopes": [
+            "WIDTH_HEIGHT",
+            "GAP"
+          ],
+          "value": 8
+        },
+        {
+          "name": "space/3",
+          "token": "space-3",
+          "type": "FLOAT",
+          "scopes": [
+            "WIDTH_HEIGHT",
+            "GAP"
+          ],
+          "value": 12
+        },
+        {
+          "name": "space/4",
+          "token": "space-4",
+          "type": "FLOAT",
+          "scopes": [
+            "WIDTH_HEIGHT",
+            "GAP"
+          ],
+          "value": 16
+        },
+        {
+          "name": "space/5",
+          "token": "space-5",
+          "type": "FLOAT",
+          "scopes": [
+            "WIDTH_HEIGHT",
+            "GAP"
+          ],
+          "value": 20
+        },
+        {
+          "name": "space/6",
+          "token": "space-6",
+          "type": "FLOAT",
+          "scopes": [
+            "WIDTH_HEIGHT",
+            "GAP"
+          ],
+          "value": 24
+        },
+        {
+          "name": "space/7",
+          "token": "space-7",
+          "type": "FLOAT",
+          "scopes": [
+            "WIDTH_HEIGHT",
+            "GAP"
+          ],
+          "value": 32
+        },
+        {
+          "name": "space/8",
+          "token": "space-8",
+          "type": "FLOAT",
+          "scopes": [
+            "WIDTH_HEIGHT",
+            "GAP"
+          ],
+          "value": 48
+        },
+        {
+          "name": "radius/sm",
+          "token": "radius-sm",
+          "type": "FLOAT",
+          "scopes": [
+            "CORNER_RADIUS"
+          ],
+          "value": 4
+        },
+        {
+          "name": "radius/md",
+          "token": "radius-md",
+          "type": "FLOAT",
+          "scopes": [
+            "CORNER_RADIUS"
+          ],
+          "value": 8
+        },
+        {
+          "name": "radius/lg",
+          "token": "radius-lg",
+          "type": "FLOAT",
+          "scopes": [
+            "CORNER_RADIUS"
+          ],
+          "value": 12
+        },
+        {
+          "name": "radius/full",
+          "token": "radius-full",
+          "type": "FLOAT",
+          "scopes": [
+            "CORNER_RADIUS"
+          ],
+          "value": 999
+        },
+        {
+          "name": "font-size/sm",
+          "token": "font-size-sm",
+          "type": "FLOAT",
+          "scopes": [
+            "FONT_SIZE"
+          ],
+          "value": 14
+        },
+        {
+          "name": "font-size/md",
+          "token": "font-size-md",
+          "type": "FLOAT",
+          "scopes": [
+            "FONT_SIZE"
+          ],
+          "value": 16
+        },
+        {
+          "name": "font-size/lg",
+          "token": "font-size-lg",
+          "type": "FLOAT",
+          "scopes": [
+            "FONT_SIZE"
+          ],
+          "value": 20
+        },
+        {
+          "name": "font-size/xl",
+          "token": "font-size-xl",
+          "type": "FLOAT",
+          "scopes": [
+            "FONT_SIZE"
+          ],
+          "value": 28
+        },
+        {
+          "name": "font-weight/regular",
+          "token": "font-weight-regular",
+          "type": "FLOAT",
+          "scopes": [
+            "FONT_WEIGHT"
+          ],
+          "value": 400
+        },
+        {
+          "name": "font-weight/medium",
+          "token": "font-weight-medium",
+          "type": "FLOAT",
+          "scopes": [
+            "FONT_WEIGHT"
+          ],
+          "value": 500
+        },
+        {
+          "name": "font-weight/bold",
+          "token": "font-weight-bold",
+          "type": "FLOAT",
+          "scopes": [
+            "FONT_WEIGHT"
+          ],
+          "value": 700
+        },
+        {
+          "name": "line-height/tight",
+          "token": "line-height-tight",
+          "type": "FLOAT",
+          "scopes": [
+            "LINE_HEIGHT"
+          ],
+          "value": 125,
+          "note": "Porcentaje (1.25 → 125)"
+        },
+        {
+          "name": "line-height/normal",
+          "token": "line-height-normal",
+          "type": "FLOAT",
+          "scopes": [
+            "LINE_HEIGHT"
+          ],
+          "value": 150,
+          "note": "Porcentaje (1.25 → 125)"
+        },
+        {
+          "name": "font-family/sans",
+          "token": "font-family-sans",
+          "type": "STRING",
+          "scopes": [
+            "FONT_FAMILY"
+          ],
+          "value": "Inter",
+          "note": "Equivale a la pila CSS: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif"
+        }
+      ]
+    }
+  ],
+  "effectStyles": [
+    {
+      "name": "shadow/sm",
+      "token": "shadow-sm",
+      "css": "0 1px 2px rgba(18, 19, 26, 0.08)"
+    },
+    {
+      "name": "shadow/md",
+      "token": "shadow-md",
+      "css": "0 4px 12px rgba(18, 19, 26, 0.12)"
+    }
+  ]
+}

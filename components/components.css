@@ -1,0 +1,96 @@
+/* Kora · componentes. Solo usan tokens (tokens/tokens.css). Sin colores ni px sueltos (salvo 1px/2px de borde y foco). */
+
+/* ---------- Base ---------- */
+.k-page {
+  margin: 0;
+  background: var(--surface-base);
+  color: var(--text-primary);
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-normal);
+}
+
+/* El foco visible nunca se quita (regla del sistema) */
+.k-btn:focus-visible,
+.k-field__input:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+/* ---------- Button ---------- */
+/* variantes: primary | secondary | ghost | danger · tamaños: sm | md (por defecto md) */
+.k-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  height: var(--space-8);                 /* md = 48 de alto táctil */
+  padding: 0 var(--space-5);
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  font: inherit;
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+}
+.k-btn--sm { height: var(--space-7); padding: 0 var(--space-3); font-size: var(--font-size-sm); }
+
+.k-btn--primary { background: var(--action-primary); color: var(--text-inverse); }
+.k-btn--primary:hover { background: var(--action-primary-hover); }
+
+.k-btn--secondary { background: var(--surface-raised); color: var(--text-primary); border-color: var(--border-strong); }
+.k-btn--secondary:hover { border-color: var(--text-primary); }
+
+.k-btn--ghost { background: transparent; color: var(--text-primary); }
+.k-btn--ghost:hover { background: var(--border-subtle); }
+
+.k-btn--danger { background: var(--action-danger); color: var(--text-inverse); }
+.k-btn--danger:hover { background: var(--action-danger-hover); }
+
+/* Disabled: atributo nativo, nunca con opacity */
+.k-btn:disabled { background: var(--border-subtle); color: var(--text-muted); border-color: transparent; cursor: not-allowed; }
+
+/* ---------- TextField ---------- */
+/* estructura: .k-field > .k-field__label + .k-field__input + .k-field__hint | .k-field__error */
+.k-field { display: flex; flex-direction: column; gap: var(--space-1); }
+.k-field__label { font-size: var(--font-size-sm); font-weight: var(--font-weight-medium); color: var(--text-primary); }
+.k-field__input {
+  height: var(--space-8);
+  padding: 0 var(--space-3);
+  background: var(--surface-raised);
+  color: var(--text-primary);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  font: inherit;
+}
+.k-field__hint { font-size: var(--font-size-sm); color: var(--text-muted); }
+.k-field__error { font-size: var(--font-size-sm); color: var(--feedback-danger-text); }
+.k-field--invalid .k-field__input { border-color: var(--feedback-danger-text); }
+.k-field__input:disabled { background: var(--border-subtle); color: var(--text-muted); cursor: not-allowed; }
+
+/* ---------- Badge ---------- */
+/* variantes: neutral | success | warning | danger. Es informativo: NO es clicable */
+.k-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-tight);
+}
+.k-badge--neutral { background: var(--border-subtle); color: var(--text-muted); }
+.k-badge--success { background: var(--feedback-success-bg); color: var(--feedback-success-text); }
+.k-badge--warning { background: var(--feedback-warning-bg); color: var(--feedback-warning-text); }
+.k-badge--danger  { background: var(--feedback-danger-bg);  color: var(--feedback-danger-text); }
+
+/* ---------- Card ---------- */
+/* estructura: .k-card > .k-card__header? + .k-card__body + .k-card__footer? */
+.k-card {
+  background: var(--surface-raised);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+.k-card__header { padding: var(--space-4) var(--space-6); border-bottom: 1px solid var(--border-subtle); font-size: var(--font-size-lg); font-weight: var(--font-weight-bold); }
+.k-card__body { padding: var(--space-6); }
+.k-card__footer { padding: var(--space-4) var(--space-6); border-top: 1px solid var(--border-subtle); display: flex; justify-content: flex-end; gap: var(--space-2); }
